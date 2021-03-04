@@ -1,7 +1,9 @@
-FROM nginx
+FROM tomcat:8.0-alpine
 
-COPY wrapper.sh /
+LABEL maintainer=”deepak@softwareyoga.com”
 
-COPY html /usr/share/nginx/html
+ADD sample.war /usr/local/tomcat/webapps/
 
-CMD ["./wrapper.sh"]
+EXPOSE 8080
+
+CMD [“catalina.sh”, “run”]
